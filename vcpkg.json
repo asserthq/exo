@@ -1,0 +1,7 @@
+{
+    "name": "cpp-starter",
+    "dependencies": [
+        "fmt",
+        "boost-asio"
+    ]
+}
