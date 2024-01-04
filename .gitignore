@@ -1,4 +1,7 @@
 build/
-.vscode/
 vcpkg_installed/
 CMakeUserPresets.json
+
+.clangd
+.cache/
+.vscode/
