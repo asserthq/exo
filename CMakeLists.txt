@@ -1,14 +1,12 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required (VERSION 3.20)
 
-project(echo-server)
+project ("exo")
 
-add_subdirectory("src")
+add_subdirectory ("src")
 
-# Generate compile_commands.json and specify path to it
-# for clangd LSP server (for Neovim in my case)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-configure_file(
-    ${CMAKE_SOURCE_DIR}/.clangd.in
-    ${CMAKE_SOURCE_DIR}/.clangd
+# For clangd lsp server
+file(CREATE_LINK
+    "${CMAKE_BINARY_DIR}/compile_commands.json"
+    "${CMAKE_SOURCE_DIR}/build/compile_commands.json"
+    SYMBOLIC
 )
-
