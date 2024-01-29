@@ -1,5 +1,5 @@
 {
-    "version": 3,
+    "version": 6,
     "configurePresets": [
         {
             "name": "base",
@@ -73,26 +73,108 @@
         {
             "name": "gcc-release",
             "inherits": ["gcc", "release"]
-        }
+        },
+        
+        {
+            "name": "clang-debug",
+            "inherits": ["clang", "debug"]
+        },
+        {
+            "name": "clang-release",
+            "inherits": ["clang", "release"]
+        },
+
+        {
+            "name": "msvc-debug",
+            "inherits": ["msvc", "debug"]
+        },
+        {
+            "name": "msvc-release",
+            "inherits": ["msvc", "release"]
+        }        
     ],
 
   
     "buildPresets": [
         {
+            "name": "gcc-debug",
+            "configurePreset": "gcc-debug"
+        },
+        {
+            "name": "gcc-release",
+            "configurePreset": "gcc-release"
+        },
+        
+        {
+            "name": "msvc-debug",
+            "configurePreset": "msvc-debug"
+        },
+        {
+            "name": "msvc-release",
+            "configurePreset": "msvc-release"
+        },
+        
+        {
+            "name": "clang-debug",
+            "configurePreset": "clang-debug"
+        },
+        {
+            "name": "clang-release",
+            "configurePreset": "clang-release"
+        }
+    ],
+
+
+    "workflowPresets": [
+        {
             "name": "debug",
-            "configurePreset": "debug"
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "gcc-debug"
+                },
+                {
+                    "type": "build",
+                    "name": "gcc-debug"
+                }
+            ]
         },
         {
             "name": "release",
-            "configurePreset": "release"
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "gcc-release"
+                },
+                {
+                    "type": "build",
+                    "name": "gcc-release"
+                }
+            ]
         }
     ],
 
 
     "testPresets": [
         {
-            "name": "debug",
-            "configurePreset": "debug",
+            "name": "gcc-debug",
+            "configurePreset": "gcc-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        
+        {
+            "name": "msvc-debug",
+            "configurePreset": "msvc-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        
+        {
+            "name": "clang-debug",
+            "configurePreset": "clang-debug",
             "output": {
                 "outputOnFailure": true
             }
